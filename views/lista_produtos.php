@@ -1,4 +1,4 @@
-<table style="border:1px solid #ccc; width: 100%">
+<table style="border:1px solid #ccc; width: 100%;">
 	<tr>
 		<th>Nome</th>
 		<th>Preço</th>
