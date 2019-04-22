@@ -9,7 +9,7 @@
 	<header>
 		<div class="container">
 			<div id="menu">
-				<a href="?pagina=inserir">Inserir novo produto</a>
+				<a href="?pagina=manter">Inserir novo produto</a>
 				<a href="?pagina=listar">Listar produtos</a>
 			</div>
 		</div>

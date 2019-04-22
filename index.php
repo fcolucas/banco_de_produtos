@@ -8,7 +8,7 @@ if(isset($_GET['pagina'])) $pagina = $_GET['pagina'];
 else $pagina = 'home';
 
 switch ($pagina) {
-	case 'inserir':
+	case 'manter':
 		include 'views/manter_produto.php';
 		break;
 	case 'listar':

@@ -9,13 +9,13 @@
 
 	<?php
 		while($linha = mysqli_fetch_array($consulta_produtos)){
-			echo '<tr><td>'.$linha['nome_produto'].'</td>';
-			echo '<td>R$ '.$linha['preco_produto'].'</td>';
-			echo '<td>'.$linha['descricao_produto'].'</td>';
-			echo '<td><img src="'.$linha['imagem_produto'].'"</img></td>';
+			echo '<tr><td>'.$linha['nome'].'</td>';
+			echo '<td>R$ '.$linha['preco'].'</td>';
+			echo '<td>'.$linha['descricao'].'</td>';
+			echo '<td><img src="images/'.$linha['imagem'].'"</img></td>';
 	?> 
-		<td><a href="?pagina=inserir_aluno&editar=<?= $linha['id_aluno']?>"> Editar</a>
-			<a href="deleta_aluno.php?id_aluno=<?= $linha['id_aluno']?>"> Deletar</a></td></tr>
+		<td><a href="?pagina=manter&editar=<?= $linha['id']?>"> Editar</a>
+			<a href="controllers/editar_produto.php?deletar=<?= $linha['id']?>"> Deletar</a></td></tr>
 	<?php
 		}
 	?>

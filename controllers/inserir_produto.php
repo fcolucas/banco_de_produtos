@@ -1,31 +1,24 @@
 <?php 
 	include '../db.php';
 
-	$nome = $_POST['nome_produto'];
-	$preco = $_POST['preco_produto'];
-	$descricao = $_POST['descricao_produto'];
-	$imagem = $_FILES['imagem_produto']['tmp_name'];
-	$tamanho = $_FILES['imagem_produto']['size'];
+	$nome = $_POST['nome'];
+	$preco = $_POST['preco'];
+	$descricao = $_POST['descricao'];
+	$imagem = $_FILES['imagem']['name'];
 
-/*	echo $nome.'<br \>';
-	echo $preco.'<br \>';
-	echo $descricao.'<br \>';
-	echo $imagem;*/
+	$target = "images/".basename($_FILES['imagem']['name']);
 
-	if ($imagem != "none"){
-    	$fp = fopen($imagem, "rb");
-     	$conteudo = fread($fp, $tamanho);
-      	$conteudo = addslashes($conteudo);
-      	fclose($fp);
-    	
-    	$query = "INSERT INTO PRODUTO(nome_produto, preco_produto, descricao_produto, imagem_produto) VALUES ('$nome', $preco, '$descricao', $conteudo)";
+	$query = "INSERT INTO PRODUTO(nome, preco, descricao, imagem) VALUES ('$nome', $preco, '$descricao', '$imagem')";
 
-    	mysqli_query($conexao, $query) or die("Algo deu errado ao inserir o registro. Tente novamente.");
+	print($query);
 
-    	header('location:../index.php?pagina=listar');
+	mysqli_query($conexao, $query) or die("Algo deu errado ao inserir o registro. Tente novamente.");
 
-    	if(mysql_affected_rows($conexao) > 0) print "Dados inseridos com sucesso!";
-    	else print "Não foi possível salvar os dados!";
-   	}else print "Não foi possível carregar a imagem.";
+	if(move_uploaded_file($_FILES['imagem']['tmp_name'], $target)){
+		echo "Dados inseridos com sucesso!";
+	}else echo "Houve um problema com a inserção dos dados";
+
+	
+	#header('location:../index.php?pagina=listar');
 
  ?>
